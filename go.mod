@@ -1,3 +1,3 @@
-module github.com/gigatar/error-helper
+module github.com/gigatar/errorhelper
 
 go 1.24.2
