@@ -51,11 +51,15 @@ func (d *DefaultEncoder) Encode(ctx context.Context, err error, w http.ResponseW
 }
 
 func (d *DefaultEncoder) statusCode(err error) int {
-
 	if d.Mapper != nil {
 		return d.Mapper(err)
 	}
 
+	return DefaultMapper(err)
+}
+
+// DefaultMapper provides the default error to status code mapping
+func DefaultMapper(err error) int {
 	switch err {
 	case ErrNotFound:
 		return http.StatusNotFound
